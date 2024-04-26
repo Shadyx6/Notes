@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit your note</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="wrapper h-screen w-full bg-black">
+        <div class="top flex flex-col">
+            <div class="heads ml-4 mt-4">
+                <h2 class="text-l font-semibold text-blue-200">Update your note</h2>
+            </div>
+            <div class="form ml-12 mt-2">
+                <form class="flex flex-col gap-6" action="/update/<%=file%>" method="post">
+                    <input class="title w-[200px] py-[2px] px-2" disabled type="text" placeholder="Title" name="title" value="<%= file%>" />
+                    <textarea class="details bg-white w-[800px] h-30 px-2 py-2 resize-none" placeholder="Details"
+                        name="details"><%= details%></textarea>
+                    <button class="submit bg-green-600 text-white rounded w-fit py-2 px-6">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

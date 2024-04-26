@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=file%></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="wrapper h-screen w-full bg-black flex items-center justify-center">
+        <div class="container flex flex-col gap-6 h-74 w-70  items-center h-80 w-80 rounded bg-green-600 py-8 px-8">
+        <div class="title">
+            <h1 class="fn text-bold text-xl"><%=file%></h1>
+        </div>
+        <div class="details text-white ">
+            <h3><%= details%></h3>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

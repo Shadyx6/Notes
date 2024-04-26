@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="wrapper h-screen w-full bg-black">
+        <div class="top flex flex-col">
+            <div class="heads ml-4 mt-4">
+                <h2 class="text-l font-semibold text-blue-200">Create new Notes!</h2>
+            </div>
+            <div class="form ml-12 mt-2">
+                <form class="flex flex-col gap-6" action="/create" method="post">
+                    <input class="title w-[200px] py-[2px] px-2" type="text" placeholder="Title" name="title" />
+                    <textarea class="details bg-white w-[800px] h-30 px-2 py-2 resize-none" placeholder="Details"
+                        name="details"></textarea>
+                    <button class="submit bg-blue-600 text-white rounded w-fit py-2 px-6">
+                        Save note
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr class="mt-4" />
+        <div class="mid mt-2 ml-4">
+            <div class="mtop">
+                <h2 class="font-semibold text-green-200">Your notes</h2>
+            </div>
+            <div class="notes flex flex-wrap gap-4 mt-4 ">
+                <% if(files.length > 0) { %> 
+                    <div class="notes flex flex-wrap gap-4 mt-4">
+                        <% files.forEach(function(file) { %>
+                            <div class="cards relative h-40 w-64 bg-slate-300 py-2 px-3">
+                                <h2 class="stitle font-bold text-l">
+                                    <%= file.name %>
+                                </h2>
+                                <h4 class="sdetails text-l">
+                                    <% if(file.details.split(' ').join('').length > 16) { %>
+                                        <%= file.details.slice(0, 36) + '...' %>
+                                    <% } else { %>
+                                        <%= file.details %>
+                                    <% } %> 
+                                </h4>
+                                
+                                <div class="bottom text-red-600 font-bold absolute top-[80%] flex items-center justify-evenly gap-16">
+                                    <div class="left relative">
+                                        <a class="font-bold text-black whitespace-nowrap" href="/read/<%= file.name %>">Read more</a>
+                                    </div>
+                                    <div class="right flex gap-2 relative">
+                                    <a class="text-blue-600" href="/edit/<%= file.name%>">Edit</a>
+                                    <a class="text-red-600" href="/delete/<%= file.name%>">Delete</a>
+                                </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } else { %>
+                    <div class="emptyclass mt-24 flex items-center justify-center absolute inset-x-1/2">
+                        <h4 class="text-l whitespace-nowrap border-dashed py-2 px-2 border-green-300 border-2 text-white">
+                            No tasks yet
+                        </h4>
+                    </div>
+                <% } %>
+                
+            
+        
+    </div>
+</body>
+
+</html>
